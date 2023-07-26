@@ -1,0 +1,26 @@
+extends layout
+
+include _includes/sharedHTMLfunctions
+
+block content
+  .row.banner
+    .col-12
+      h3= pageHeader.title
+  .row 
+     img(src='/images/our_restaurant.jpeg' style="width:1000px; height:500px; " )
+  .row
+    .col-12
+      //- body This is a multicuisine restaurant founded in the year 2021. Here, in our restaurant you will find special and unique dishes from all around the world,specializing in Nepali, Vietnamese, Indian and Chinese food. The food is presented to you with care and love by our chef team recruited from all around the world and lead by Chef Anh. Please enjoy your meal.
+  .row
+      h4 Food Rating 
+        p.rating
+          +outputRating(location.rating)
+          h4 Address
+          p= location.address
+  
+  .row
+     .footer
+      | Would you like more info about our restaurant? 
+      a(href='#') Subscribe
+            
+  

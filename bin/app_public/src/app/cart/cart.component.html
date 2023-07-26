@@ -1,0 +1,92 @@
+<div class="image">
+    <div *ngIf="message.length>0">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Hello customer!</strong> {{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+    <div *ngIf="(formView==='UPDATE_ORDER_VIEW'|| formView==='ADD_ORDER_VIEW'); else orderCreated">
+        <br>
+        <br>
+        <div class="card" style="margin-left: 28%; margin-right: 28%;">
+            <div class="card-header">
+                <h3>Your Cart!</h3>
+            </div>
+
+            <div class="card-body">
+                <div *ngIf="items.length<1">
+                    <h5>Your cart is empty</h5>
+                </div>
+                <div *ngIf="items.length>0">
+                    <div *ngFor="let item of items">
+                        <div class="row">
+                            <div class="col-sm">
+                                <p class="card-text"><b>{{ item.name }}</b></p>
+                            </div>
+                            <div class="col-sm float-right">
+                                <p class="card-text">${{ item.price }} </p>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                    <hr>
+                    <div class="row p-3 mb-2 bg-primary text-white">
+                        <div class="col-sm">
+                            <p class="card-text"><b>Total</b></p>
+                        </div>
+                        <div class="col-sm float-right">
+                            <p class="card-text">${{total}} &nbsp;<b>(Including Taxes)</b></p>
+                        </div>
+                    </div>
+                    <hr>
+                    <h5 class="card-title">Please provide your details</h5>
+                    <hr>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="name">Name</label>
+                            <input type="input" class="form-control" id="name" placeholder="Name" [value]="userName">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="address">Delivery Address</label>
+                            <input type="input" class="form-control" id="address" placeholder="Delivery Address"
+                                [value]="userAddress">
+                        </div>
+                        <br>
+                        <div class="form-group" *ngIf="formView==='UPDATE_ORDER_VIEW'">
+                            <button class=" btn btn-primary" (click)="updateOrder(orderId)"> Update Order
+                            </button>
+                        </div>
+                        <div class="form-group" *ngIf="formView==='ADD_ORDER_VIEW'">
+                            <button class="btn btn-primary" (click)="submitOrder(items)"> Submit Order
+                            </button>
+                        </div>
+                        &nbsp;&nbsp;<div class="form-group">
+                            <button class="btn btn-danger" (click)="reset()"> Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <ng-template #orderCreated>
+        <br>
+        <br>
+        <div class="card" style="margin-left: 30%; margin-right: 30%;">
+            <div class="card-header">
+                Your order has been created
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Please find order details below</h5>
+                <p class="card-text">Confirmation ID: <b>{{orderId}}</b></p>
+                <button class="btn btn-danger" (click)="cancelOrder(orderId)">Cancel Order</button> &nbsp;&nbsp;
+                <button class="btn btn-primary" (click)="getOrder(orderId)">Update Order</button> &nbsp;&nbsp;
+                <button class="btn btn-warning" (click)="reset()" style="float: right;"> Close</button>
+            </div>
+        </div>
+    </ng-template>
+</div>

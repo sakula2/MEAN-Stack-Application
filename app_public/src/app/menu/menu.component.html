@@ -1,0 +1,30 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-10 pb-5 text-center">
+        <h3>Happy Place makes the World smell better! </h3>
+        <h1 class="quicksand-font header text-uppercase">Menu</h1>
+        <hr>
+      </div>
+    </div>
+    <div>
+      <div class="row">
+        <div *ngFor="let product of products" class="col col-sm-12 col-md-6 my-3">
+          <div class="card full-content">
+            <div class="card-body">
+              <div class="card-content">
+                <h5>{{ product.name }} <span
+                    class="badge badge-pill badge-warning float-right">{{product.cuisine}}</span></h5>
+                <p class="text-lowercase">{{ product.description }}</p>
+              </div>
+              <div class="price-content">
+                <p><strong>${{ product.price }} <small><sup>*</sup>(including taxes)</small></strong></p>
+                <button class="button" class="btn btn-primary" id="{{ product._id }}" (click)="addToCart(product)">Add to cart &nbsp; <i class="bi bi-cart-fill"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+  .wrapper{background: url('https://fantuan.ca/static/275d81312763c0fc05f3678bc4b46624/ee604/head-pic2.png') no-repeat   center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;}
+
+    .card-content{
+     height: 60% !important;
+    }
+
+    .price-content{
+      height: 30% !important;
+    }
+
+    .full-content{
+      height: 100% !important;
+      width: 100% !important;
+    }
